@@ -50,7 +50,7 @@ const Navbar = ({ isScrolled }) => {
             className={`
               text-xl font-bold no-underline tracking-wide flex-shrink-0 mr-8
               transition-colors duration-300
-              ${isScrolled ? "text-slate-700" : "text-black"}
+              text-black
             `}
           >
             HEYIAMSHUBHANK

@@ -32,11 +32,11 @@ function App() {
       const secondSectionComplete = viewportHeight * 0.8;
       setIsScrolled(scrollY > secondSectionComplete);
 
-      // Second section width animation calculations
-      const startPoint = viewportHeight * 0.3;
+      // Start point is 0 (top of page), end point is 90% of viewport height
+      const startPoint = 0;
       const endPoint = viewportHeight * 0.9;
 
-      // Calculate scroll progress (0 to 1)
+      // Calculate scroll progress (0 to 1) from top of page
       const scrollProgress = Math.max(
         0,
         Math.min((scrollY - startPoint) / (endPoint - startPoint), 1)
@@ -88,7 +88,7 @@ function App() {
       <HeroSection />
 
       {/* Scroll Spacer - Creates space for scroll effect */}
-      <div className="h-[50vh] w-full" />
+      {/* <div className="h-[50vh] w-full" /> */}
 
       {/* Second Section - Animated width and positioning */}
       <SecondSection

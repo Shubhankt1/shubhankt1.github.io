@@ -6,7 +6,7 @@ const SecondSection = ({
 }) => {
   return (
     <section
-      className="min-h-screen bg-black sticky top-0 z-20 px-8 py-16 mt-[40vh] shadow-xl"
+      className="min-h-screen bg-black sticky top-0 z-20 px-8 py-16 mt-[90vh] shadow-xl"
       style={{
         width: `${sectionWidth}%`,
         left: `${sectionLeft}%`,
