@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shubhank Tyagi</title>
+    <style>
+      /* ========== GLOBAL RESET ========== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+        background: white;
+      }
+
+      /* ========== NAVIGATION ========== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 2rem;
+        z-index: 100;
+        transition: all 0.4s ease;
+      }
+
+      .navbar.scrolled {
+        width: 85%;
+        left: 7.5%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        padding: 1rem 3rem;
+        top: 25px;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+        margin-right: 2rem;
+      }
+
+      .navbar.scrolled .nav-logo {
+        color: #2c3e50;
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+        flex-shrink: 0;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        color: black;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        color: #333;
+        transform: translateY(-2px);
+      }
+
+      .navbar.scrolled .nav-link {
+        color: #555;
+      }
+
+      .navbar.scrolled .nav-link:hover {
+        color: #667eea;
+      }
+
+      .nav-contact {
+        background: black;
+        color: white !important;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .nav-contact:hover {
+        background: white;
+        color: black !important;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbar.scrolled .nav-contact {
+        background: black;
+        color: white !important;
+      }
+
+      .navbar.scrolled .nav-contact:hover {
+        background: white;
+        color: black !important;
+      }
+
+      /* ========== MOBILE NAVIGATION ========== */
+      .mobile-nav-controls {
+        display: none;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger-line {
+        width: 25px;
+        height: 3px;
+        background: black;
+        margin: 3px 0;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+
+      .navbar.scrolled .hamburger-line {
+        background: #2c3e50;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 70px;
+        right: 1rem;
+        width: 200px;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mobile-menu-content {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
+      .mobile-nav-link {
+        color: black;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .mobile-nav-link:last-child {
+        border-bottom: none;
+      }
+
+      .mobile-nav-link:hover {
+        background: #f8f8f8;
+        color: #333;
+      }
+
+      /* ========== HERO SECTION ========== */
+      .hero-section {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 8vw, 8rem);
+        font-weight: 800;
+        color: black;
+        text-align: center;
+        white-space: nowrap;
+        letter-spacing: -0.02em;
+        animation: fadeInUp 1s ease-out;
+        line-height: 1;
+        padding: 0;
+        margin: 0;
+      }
+
+      .hero-subtitle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        color: black;
+        font-size: clamp(1rem, 1.2vw, 1.5rem);
+        font-weight: 500;
+        animation: fadeInUp 1s ease-out 0.3s both;
+        margin-top: 5px;
+      }
+
+      .subtitle-left {
+        text-align: left;
+        flex: 0 0 auto;
+      }
+
+      .subtitle-right {
+        text-align: right;
+        flex: 0 0 auto;
+        min-width: 200px;
+      }
+
+      /* ========== TYPING ANIMATION ========== */
+      .typing-text {
+        display: inline-block;
+        position: relative;
+        min-height: 1.2em;
+      }
+
+      .typing-text::after {
+        content: "|";
+        position: absolute;
+        right: -0.1em;
+        animation: blink 1s infinite;
+        color: #555;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* ========== SECOND SECTION ========== */
+      .scroll-spacer {
+        height: 50vh;
+        width: 100%;
+      }
+
+      .second-section {
+        min-height: 100vh;
+        background: black;
+        border-radius: 24px 24px 0 0;
+        position: sticky; /* <-- change from relative to sticky */
+        top: 0; /* <-- stick to top */
+        z-index: 2;
+        padding: 4rem 2rem;
+        margin-top: 40vh;
+        box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.1);
+        width: 75%;
+        left: 12.5%;
+      }
+
+      .content-container {
+        max-width: 800px;
+        margin: 0 auto;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+      }
+
+      .content-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-heading {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        background: white /*linear-gradient(135deg, #667eea, #764ba2)*/;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-text {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.8;
+        color: white;
+        text-align: justify;
+        margin-bottom: 2rem;
+      }
+
+      /* ========== FLOATING ELEMENTS ========== */
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .floating-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.05);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .circle-1 {
+        width: 100px;
+        height: 100px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .circle-2 {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 15%;
+        animation-delay: 2s;
+      }
+
+      .circle-3 {
+        width: 80px;
+        height: 80px;
+        top: 80%;
+        left: 20%;
+        animation-delay: 4s;
+      }
+
+      /* ========== ANIMATIONS ========== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-20px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(10px) rotate(240deg);
+        }
+      }
+
+      /* ========== RESPONSIVE DESIGN ========== */
+      /* Tablet */
+      @media (max-width: 1024px) and (min-width: 769px) {
+        .navbar.scrolled {
+          width: 95%;
+          left: 2.5%;
+          padding: 1rem 2rem;
+        }
+
+        .nav-menu {
+          gap: 1.5rem;
+        }
+
+        .nav-contact {
+          padding: 0.65rem 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 1rem 1.5rem;
+        }
+
+        .navbar.scrolled {
+          width: 90%;
+          left: 5%;
+          padding: 0.75rem 1.5rem;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          border-radius: 25px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-logo {
+          font-size: 1.1rem;
+        }
+
+        .navbar.scrolled .nav-logo {
+          color: #2c3e50;
+        }
+
+        .navbar.scrolled .hamburger-line {
+          background: #2c3e50;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .mobile-nav-controls {
+          display: flex;
+        }
+
+        .mobile-nav-controls .nav-contact {
+          background: black;
+          color: white;
+          padding: 0.6rem 1rem;
+          font-size: 0.85rem;
+        }
+
+        .mobile-nav-controls .nav-contact:hover {
+          background: white;
+          color: black;
+        }
+
+        .hero-title {
+          white-space: normal;
+        }
+
+        .hero-subtitle {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+          margin-top: 2rem;
+        }
+
+        .subtitle-left,
+        .subtitle-right {
+          text-align: center;
+        }
+
+        .subtitle-right {
+          min-width: auto;
+        }
+
+        .hero-content {
+          width: 100%;
+          max-width: 90vw;
+          margin-top: 2rem;
+        }
+
+        .second-section {
+          margin-top: 40vh;
+          padding: 3rem 1.5rem;
+        }
+
+        .scroll-spacer {
+          height: 50vh;
+        }
+
+        #thirdSection {
+          background: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-content">
+        <a href="#" class="nav-logo">HEYIAMSHUBHANK</a>
+
+        <!-- Desktop Menu -->
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link nav-contact">Contact</a></li>
+        </ul>
+
+        <!-- Mobile Controls -->
+        <div class="mobile-nav-controls">
+          <div class="hamburger" id="hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+          </div>
+          <a href="#contact" class="nav-link nav-contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-content">
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#education" class="mobile-nav-link">Education</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+      </div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements" hidden>
+      <div class="floating-circle circle-1"></div>
+      <div class="floating-circle circle-2"></div>
+      <div class="floating-circle circle-3"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">SHUBHANK TYAGI</h1>
+        <div class="hero-subtitle">
+          <div class="subtitle-left">SOFTWARE ENGINEER. BUILDER.</div>
+          <div class="subtitle-right">
+            <span class="typing-text" id="typingText"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll Spacer -->
+    <div class="scroll-spacer"></div>
+
+    <!-- Second Section -->
+    <section class="second-section" id="secondSection">
+      <div class="content-container" id="contentContainer">
+        <h2 class="section-heading">About Me</h2>
+        <p class="section-text">
+          Welcome to my digital space. I'm passionate about creating meaningful
+          experiences through technology and design. My journey spans across
+          various domains of development, from crafting elegant user interfaces
+          to building robust backend systems.
+        </p>
+        <p class="section-text">
+          I believe in the power of clean code, thoughtful design, and
+          innovative solutions. Every project is an opportunity to push
+          boundaries and create something extraordinary that makes a real
+          difference in people's lives.
+        </p>
+        <p class="section-text">
+          When I'm not coding, you'll find me exploring new technologies,
+          contributing to open-source projects, or sharing knowledge with the
+          developer community. Let's build something amazing together.
+        </p>
+      </div>
+    </section>
+
+    <script>
+      // Configuration
+      const ANIMATION_CONFIG = {
+        startWidth: 75,
+        endWidth: 100,
+        maxBorderRadius: 0,
+      };
+
+      // Typing animation functionality
+      function initializeTypingAnimation() {
+        const typingElement = document.getElementById("typingText");
+        if (!typingElement) return;
+
+        const texts = [
+          "FULL-STACK",
+          "MOBILE",
+          "CLOUD",
+          "INTERNET OF THINGS",
+          "EMBEDDED SYSTEMS",
+        ];
+
+        let currentIndex = 0;
+        let currentText = "";
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function typeText() {
+          const fullText = texts[currentIndex];
+
+          if (isDeleting) {
+            currentText = fullText.substring(0, currentText.length - 1);
+            typeSpeed = 50;
+          } else {
+            currentText = fullText.substring(0, currentText.length + 1);
+            typeSpeed = 100;
+          }
+
+          typingElement.textContent = currentText;
+
+          if (!isDeleting && currentText === fullText) {
+            typeSpeed = 2000;
+            isDeleting = true;
+          } else if (isDeleting && currentText === "") {
+            isDeleting = false;
+            currentIndex = (currentIndex + 1) % texts.length;
+            typeSpeed = 500;
+          }
+
+          setTimeout(typeText, typeSpeed);
+        }
+
+        setTimeout(typeText, 1500);
+      }
+
+      // Navbar scroll animation
+      function updateNavbar() {
+        const navbar = document.getElementById("navbar");
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+
+        const secondSectionComplete = viewportHeight * 0.8;
+
+        if (scrollY > secondSectionComplete) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+
+      // Second section animation (updated to handle all sections)
+      function updateSecondSection() {
+        // IDs for all sections and containers
+        const sectionIds = [
+          { section: "secondSection", container: "contentContainer" },
+        ];
+
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+
+        sectionIds.forEach((ids, idx) => {
+          const section = document.getElementById(ids.section);
+          const container = document.getElementById(ids.container);
+
+          // Calculate start and end points for each section
+          const startPoint = viewportHeight * (0.3 + idx);
+          const endPoint = viewportHeight * (0.9 + idx);
+          const scrollProgress = Math.max(
+            0,
+            Math.min((scrollY - startPoint) / (endPoint - startPoint), 1)
+          );
+
+          const widthPercent =
+            ANIMATION_CONFIG.startWidth +
+            (ANIMATION_CONFIG.endWidth - ANIMATION_CONFIG.startWidth) *
+              scrollProgress;
+
+          const finalWidth = Math.min(100, widthPercent);
+
+          section.style.width = `${finalWidth}%`;
+          section.style.left = `${Math.max(0, (100 - finalWidth) / 2)}%`;
+
+          const borderRadius =
+            ANIMATION_CONFIG.maxBorderRadius * (1 - scrollProgress);
+          section.style.borderRadius = `${borderRadius}px ${borderRadius}px 0 0`;
+
+          console.log(
+            `scrollprogress: ${scrollProgress}, finalWidth: ${finalWidth}`
+          );
+
+          if (scrollProgress > (idx + 1) * 0.05) {
+            container.classList.add("visible");
+          }
+
+          if (scrollProgress < (idx + 1) * 0.1) {
+            container.classList.remove("visible");
+          }
+        });
+
+        // Floating circles animation (keep as is)
+        const circles = document.querySelectorAll(".floating-circle");
+        circles.forEach((circle, index) => {
+          const speed = [0.5, 0.7, 0.9][index] || 0.5;
+          circle.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+      }
+
+      // Mobile menu functionality
+      function initializeMobileMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+        if (!hamburger || !mobileMenu) return;
+
+        hamburger.addEventListener("click", function (e) {
+          e.preventDefault();
+          hamburger.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+
+          if (mobileMenu.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+          } else {
+            document.body.style.overflow = "";
+          }
+        });
+
+        mobileNavLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            hamburger.classList.remove("active");
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (mobileMenu.classList.contains("active")) {
+              hamburger.classList.remove("active");
+              mobileMenu.classList.remove("active");
+              document.body.style.overflow = "";
+            }
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+            hamburger.classList.remove("active");
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // Combined scroll handler
+      function handleScroll() {
+        updateNavbar();
+        updateSecondSection();
+      }
+
+      // Initialize everything
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeTypingAnimation();
+        initializeMobileMenu();
+        updateNavbar();
+        updateSecondSection();
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", function () {
+          updateNavbar();
+          updateSecondSection();
+        });
+      });
+    </script>
+  </body>
+</html>

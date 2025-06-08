@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global reset and base styles */
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  body {
+    @apply font-inter leading-relaxed text-gray-800 overflow-x-hidden bg-white;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Navbar scrolled state styles */
+  .navbar-scrolled {
+    @apply w-[85%] left-[7.5%] bg-white/95 backdrop-blur-md rounded-[50px] shadow-xl px-12 py-4 top-6;
+  }
+
+  /* Hero title responsive sizing */
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 8rem);
+    @apply font-extrabold text-black text-center whitespace-nowrap tracking-tight leading-none;
+  }
+
+  /* Hero subtitle responsive sizing */
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+    @apply font-medium text-black;
+  }
+
+  /* Section heading responsive sizing */
+  .section-heading {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    @apply font-bold mb-8 text-center text-white;
+  }
+
+  /* Section text responsive sizing */
+  .section-text {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    @apply leading-relaxed text-white text-justify mb-8;
+  }
+
+  /* Mobile navbar adjustments */
+  .navbar-mobile-scrolled {
+    @apply w-[90%] left-[5%] bg-white/95 backdrop-blur-md rounded-[25px] shadow-xl px-6 py-3;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  /* Custom text gradient (fallback for browsers that don't support background-clip: text) */
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Typing cursor effect */
+  .typing-cursor::after {
+    content: "|";
+    @apply absolute -right-1 animate-blink text-gray-600;
+  }
+
+  /* Custom scrollbar (webkit browsers) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
