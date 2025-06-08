@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 
 const HeroSection = () => {
-  // State for typing animation
-  const [typingText, setTypingText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  // Array of texts to cycle through in typing animation
   const texts = [
     "FULL-STACK",
     "MOBILE DEVELOPMENT",
@@ -15,46 +9,38 @@ const HeroSection = () => {
     "EMBEDDED SYSTEMS",
   ];
 
+  const [typingText, setTypingText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
-    // Typing animation logic
-    const typeText = () => {
-      const fullText = texts[currentIndex];
-      let typeSpeed = 50;
+    const current = texts[currentIndex];
+    let timeout;
 
-      if (isDeleting) {
-        // Deleting text - remove one character
-        setTypingText(fullText.substring(0, typingText.length - 1));
-        typeSpeed = 30; // Faster deletion speed
-      } else {
-        // Typing text - add one character
-        setTypingText(fullText.substring(0, typingText.length + 1));
-        typeSpeed = 50; // Normal typing speed
-      }
-
-      // Check if we've finished typing the current word
-      if (!isDeleting && typingText === fullText) {
-        typeSpeed = 1000; // Pause at the end of each word
-        setIsDeleting(true);
-      }
-      // Check if we've finished deleting the current word
-      else if (isDeleting && typingText === "") {
+    if (!isDeleting && typingText.length < current.length) {
+      // Typing forward
+      timeout = setTimeout(() => {
+        setTypingText(current.slice(0, typingText.length + 1));
+      }, 80);
+    } else if (!isDeleting && typingText.length === current.length) {
+      // Pause at end
+      timeout = setTimeout(() => setIsDeleting(true), 1000);
+    } else if (isDeleting && typingText.length > 0) {
+      // Deleting
+      timeout = setTimeout(() => {
+        setTypingText(current.slice(0, typingText.length - 1));
+      }, 30);
+    } else if (isDeleting && typingText.length === 0) {
+      // Move to next word
+      timeout = setTimeout(() => {
         setIsDeleting(false);
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length); // Move to next word
-        typeSpeed = 200; // Pause before starting next word
-      }
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+      }, 400);
+    }
 
-      return typeSpeed;
-    };
-
-    // Start typing animation after initial delay
-    const timer = setTimeout(() => {
-      const speed = typeText();
-      // Set up next typing step
-      setTimeout(typeText, speed);
-    }, 1500); // Initial delay before starting animation
-
-    return () => clearTimeout(timer);
-  }, [typingText, currentIndex, isDeleting, texts]);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line
+  }, [typingText, isDeleting, currentIndex]);
 
   return (
     <section className="h-screen flex flex-col justify-center items-center px-8 fixed top-0 left-0 w-full z-10">
