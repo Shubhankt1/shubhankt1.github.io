@@ -20,7 +20,7 @@ function App() {
     const ANIMATION_CONFIG = {
       startWidth: 75,
       endWidth: 100,
-      maxBorderRadius: 24,
+      maxBorderRadius: 0,
     };
 
     // Combined scroll handler function

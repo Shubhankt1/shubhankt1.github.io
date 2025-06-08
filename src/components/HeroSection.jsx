@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const HeroSection = () => {
+  // Array of texts to animate through
   const texts = [
     "FULL-STACK",
     "MOBILE DEVELOPMENT",
@@ -9,35 +10,43 @@ const HeroSection = () => {
     "EMBEDDED SYSTEMS",
   ];
 
+  // State for the currently displayed text in the animation
   const [typingText, setTypingText] = useState("");
+  // State for which text in the array is currently being animated
   const [currentIndex, setCurrentIndex] = useState(0);
+  // State to determine if we are deleting or typing
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    // Get the current text to animate
     const current = texts[currentIndex];
     let timeout;
 
+    // If we are typing and haven't finished the word, add one character
     if (!isDeleting && typingText.length < current.length) {
-      // Typing forward
       timeout = setTimeout(() => {
         setTypingText(current.slice(0, typingText.length + 1));
       }, 80);
-    } else if (!isDeleting && typingText.length === current.length) {
-      // Pause at end
+    }
+    // If we have finished typing the word, pause before starting to delete
+    else if (!isDeleting && typingText.length === current.length) {
       timeout = setTimeout(() => setIsDeleting(true), 1000);
-    } else if (isDeleting && typingText.length > 0) {
-      // Deleting
+    }
+    // If we are deleting and there are still characters left, remove one character
+    else if (isDeleting && typingText.length > 0) {
       timeout = setTimeout(() => {
         setTypingText(current.slice(0, typingText.length - 1));
       }, 30);
-    } else if (isDeleting && typingText.length === 0) {
-      // Move to next word
+    }
+    // If we have finished deleting, move to the next word and start typing
+    else if (isDeleting && typingText.length === 0) {
       timeout = setTimeout(() => {
         setIsDeleting(false);
         setCurrentIndex((prev) => (prev + 1) % texts.length);
       }, 400);
     }
 
+    // Cleanup timeout on effect cleanup to prevent memory leaks
     return () => clearTimeout(timeout);
     // eslint-disable-next-line
   }, [typingText, isDeleting, currentIndex]);
