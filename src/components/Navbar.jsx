@@ -34,7 +34,7 @@ const Navbar = ({ isScrolled }) => {
       {/* Main Navigation */}
       <nav
         className={`
-          fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out
+          fixed top-5 left-0 w-full z-50 transition-all duration-500 ease-out
           bg-transparent
         `}
         onKeyDown={handleKeyDown}
@@ -45,10 +45,10 @@ const Navbar = ({ isScrolled }) => {
             mx-auto w-full
             ${
               isScrolled
-                ? // When scrolled, set max-width to 65% on mobile/tablet, 75% on desktop
-                  "max-w-[75vw]"
-                : // When not scrolled, use full width with breakpoints
-                  "max-w-[95vw]"
+                ? // When scrolled - wider on small tablets, more conservative on mobile
+                  "max-w-[90vw] tablet-sm:max-w-[80vw] tablet-md:max-w-[80vw] lg:max-w-[70vw]"
+                : // When not scrolled
+                  "max-w-[80vw]"
             }
             transition-all duration-500
           `}
@@ -58,9 +58,17 @@ const Navbar = ({ isScrolled }) => {
             className={`
               bg-white
               ${isScrolled ? "shadow-lg mt-4 md:mt-6 lg:mt-8" : ""}
-              ${isScrolled ? "py-3 md:py-5 lg:py-6" : "py-4 md:py-6 lg:py-8"}
+              ${
+                isScrolled
+                  ? "py-2 tablet-sm:py-5 tablet-lg:py-6 lg:py-6"
+                  : "py-4 md:py-6 lg:py-8"
+              }
+              ${
+                isScrolled
+                  ? "px-4 sm:px-4 tablet-sm:px-6 tablet-md:px-6 lg:px-8"
+                  : "px-0 sm:px-4 lg:px-6"
+              }
               flex justify-between items-center
-              px-2 sm:px-4 md:px-5 lg:px-6
               rounded-full
               transition-all duration-500
             `}
@@ -69,7 +77,9 @@ const Navbar = ({ isScrolled }) => {
             <a
               href="#"
               className={`
-                text-xl font-bold no-underline tracking-wide flex-shrink-0 mr-8
+                text-sm xs:text-base tablet-sm:text-lg lg:text-xl 
+                font-bold no-underline tracking-wide flex-shrink-0 
+                mr-2 xs:mr-4 tablet-sm:mr-6 lg:mr-8
                 transition-colors duration-300
                 text-black hover:text-blue-500
               `}
@@ -77,8 +87,8 @@ const Navbar = ({ isScrolled }) => {
               HEYIAMSHUBHANK
             </a>
 
-            {/* Desktop Menu */}
-            <ul className="hidden md:flex items-center gap-4 md:gap-6 lg:gap-8 list-none flex-shrink-0">
+            {/* Desktop Menu - Show on tablets and up */}
+            <ul className="hidden tablet-sm:flex items-center gap-2 tablet-md:gap-4 lg:gap-6 xl:gap-8 list-none flex-shrink-0">
               <li>
                 <a
                   href="#about"
@@ -131,15 +141,13 @@ const Navbar = ({ isScrolled }) => {
                 <a
                   href="#contact"
                   className={`
-                    bg-black text-white px-6 py-3 rounded-full font-semibold text-base
-                    transition-all duration-300 whitespace-nowrap no-underline
-                    hover:bg-white hover:text-black hover:-translate-y-0.5 hover:scale-105
+                    bg-black text-white rounded-full font-semibold no-underline
+                    px-3 tablet-md:px-4 lg:px-6 
+                    py-3
+                    text-sm tablet-md:text-sm lg:text-base
+                    transition-all duration-300 whitespace-nowrap
+                    hover:bg-blue-500 hover:-translate-y-0.5 hover:scale-105
                     hover:shadow-xl
-                    ${
-                      isScrolled
-                        ? "bg-black text-white hover:bg-white hover:text-black"
-                        : ""
-                    }
                   `}
                 >
                   Contact
@@ -147,13 +155,14 @@ const Navbar = ({ isScrolled }) => {
               </li>
             </ul>
 
-            {/* Mobile Controls */}
-            <div className="md:hidden flex items-center gap-4">
+            {/* Mobile Controls - Show on mobile and small tablets */}
+            <div className="tablet-sm:hidden flex items-center gap-2 xs:gap-3">
               {/* Mobile Contact Button */}
               <a
                 href="#contact"
-                className="bg-black text-white px-4 py-2.5 rounded-full font-semibold text-sm
-                         transition-all duration-300 no-underline
+                className="bg-black text-white rounded-full font-semibold no-underline
+                         px-2 xs:px-3 py-1.5 xs:py-2 text-xs xs:text-sm
+                         transition-all duration-300
                          hover:bg-white hover:text-black"
               >
                 Contact
@@ -195,8 +204,10 @@ const Navbar = ({ isScrolled }) => {
       {/* Mobile Menu */}
       <div
         className={`
-          fixed top-16 right-4 w-48 bg-white border border-gray-200 rounded-lg
-          shadow-xl z-50 transition-all duration-300 md:hidden
+          fixed bg-white border border-gray-200 rounded-lg shadow-xl z-50 
+          transition-all duration-300 tablet-sm:hidden
+          top-12 xs:top-16 right-2 xs:right-4 
+          w-40 xs:w-48
           ${
             isMobileMenuOpen
               ? "translate-y-0 opacity-100 visible"

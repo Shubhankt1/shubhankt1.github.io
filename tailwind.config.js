@@ -2,6 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      // Custom breakpoints for specific device issues
+      xs: "480px", // Small mobile devices
+      "tablet-sm": "768px", // Small tablets (768x1024, iPad portrait)
+      "tablet-md": "834px", // Medium tablets (iPad Air, etc.)
+      "tablet-lg": "1024px", // Large tablets (iPad landscape)
+    },
     extend: {
       // Custom fonts similar to your original design
       fontFamily: {
