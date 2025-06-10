@@ -34,154 +34,160 @@ const Navbar = ({ isScrolled }) => {
       {/* Main Navigation */}
       <nav
         className={`
-          fixed top-0 left-0 w-full px-8 py-6 z-50 transition-all duration-500 ease-out
-          ${
-            isScrolled
-              ? "navbar-scrolled md:navbar-scrolled navbar-mobile-scrolled"
-              : ""
-          }
+          fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out
+          bg-transparent
         `}
         onKeyDown={handleKeyDown}
       >
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <a
-            href="#"
+        {/* Responsive container to keep navbar and its white background under width constraints */}
+        <div
+          className={`
+            mx-auto w-full
+            ${
+              isScrolled
+                ? // When scrolled, set max-width to 65% on mobile/tablet, 75% on desktop
+                  "max-w-[75vw]"
+                : // When not scrolled, use full width with breakpoints
+                  "max-w-[95vw]"
+            }
+            transition-all duration-500
+          `}
+        >
+          {/* White background, shadow, and padding for the navbar */}
+          <div
             className={`
-              text-xl font-bold no-underline tracking-wide flex-shrink-0 mr-8
-              transition-colors duration-300
-              text-black
+              bg-white
+              ${isScrolled ? "shadow-lg mt-4 md:mt-6 lg:mt-8" : ""}
+              ${isScrolled ? "py-3 md:py-5 lg:py-6" : "py-4 md:py-6 lg:py-8"}
+              flex justify-between items-center
+              px-2 sm:px-4 md:px-5 lg:px-6
+              rounded-full
+              transition-all duration-500
             `}
           >
-            HEYIAMSHUBHANK
-          </a>
+            {/* Logo */}
+            <a
+              href="#"
+              className={`
+                text-xl font-bold no-underline tracking-wide flex-shrink-0 mr-8
+                transition-colors duration-300
+                text-black hover:text-blue-500
+              `}
+            >
+              HEYIAMSHUBHANK
+            </a>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center gap-8 list-none flex-shrink-0">
-            <li>
-              <a
-                href="#about"
-                className={`
-                  no-underline text-base font-medium py-2 whitespace-nowrap
-                  transition-all duration-300 hover:-translate-y-0.5
-                  ${
-                    isScrolled
-                      ? "text-gray-600 hover:text-blue-500"
-                      : "text-black hover:text-gray-700"
-                  }
-                `}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#education"
-                className={`
-                  no-underline text-base font-medium py-2 whitespace-nowrap
-                  transition-all duration-300 hover:-translate-y-0.5
-                  ${
-                    isScrolled
-                      ? "text-gray-600 hover:text-blue-500"
-                      : "text-black hover:text-gray-700"
-                  }
-                `}
-              >
-                Education
-              </a>
-            </li>
-            <li>
-              <a
-                href="#skills"
-                className={`
-                  no-underline text-base font-medium py-2 whitespace-nowrap
-                  transition-all duration-300 hover:-translate-y-0.5
-                  ${
-                    isScrolled
-                      ? "text-gray-600 hover:text-blue-500"
-                      : "text-black hover:text-gray-700"
-                  }
-                `}
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#projects"
-                className={`
-                  no-underline text-base font-medium py-2 whitespace-nowrap
-                  transition-all duration-300 hover:-translate-y-0.5
-                  ${
-                    isScrolled
-                      ? "text-gray-600 hover:text-blue-500"
-                      : "text-black hover:text-gray-700"
-                  }
-                `}
-              >
-                Projects
-              </a>
-            </li>
-            <li>
+            {/* Desktop Menu */}
+            <ul className="hidden md:flex items-center gap-4 md:gap-6 lg:gap-8 list-none flex-shrink-0">
+              <li>
+                <a
+                  href="#about"
+                  className={`
+                    no-underline text-base font-medium py-2 whitespace-nowrap
+                    transition-all duration-300 hover:-translate-y-0.5
+                    text-black hover:text-blue-500
+                  `}
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#education"
+                  className={`
+                    no-underline text-base font-medium py-2 whitespace-nowrap
+                    transition-all duration-300 hover:-translate-y-0.5
+                    text-black hover:text-blue-500
+                  `}
+                >
+                  Education
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#skills"
+                  className={`
+                    no-underline text-base font-medium py-2 whitespace-nowrap
+                    transition-all duration-300 hover:-translate-y-0.5
+                    text-black hover:text-blue-500
+                  `}
+                >
+                  Skills
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className={`
+                    no-underline text-base font-medium py-2 whitespace-nowrap
+                    transition-all duration-300 hover:-translate-y-0.5
+                    text-black hover:text-blue-500
+                  `}
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className={`
+                    bg-black text-white px-6 py-3 rounded-full font-semibold text-base
+                    transition-all duration-300 whitespace-nowrap no-underline
+                    hover:bg-white hover:text-black hover:-translate-y-0.5 hover:scale-105
+                    hover:shadow-xl
+                    ${
+                      isScrolled
+                        ? "bg-black text-white hover:bg-white hover:text-black"
+                        : ""
+                    }
+                  `}
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+
+            {/* Mobile Controls */}
+            <div className="md:hidden flex items-center gap-4">
+              {/* Mobile Contact Button */}
               <a
                 href="#contact"
-                className={`
-                  bg-black text-white px-6 py-3 rounded-full font-semibold text-base
-                  transition-all duration-300 whitespace-nowrap no-underline
-                  hover:bg-white hover:text-black hover:-translate-y-0.5 hover:scale-105
-                  hover:shadow-xl
-                  ${
-                    isScrolled
-                      ? "bg-black text-white hover:bg-white hover:text-black"
-                      : ""
-                  }
-                `}
+                className="bg-black text-white px-4 py-2.5 rounded-full font-semibold text-sm
+                         transition-all duration-300 no-underline
+                         hover:bg-white hover:text-black"
               >
                 Contact
               </a>
-            </li>
-          </ul>
 
-          {/* Mobile Controls */}
-          <div className="md:hidden flex items-center gap-4">
-            {/* Mobile Contact Button */}
-            <a
-              href="#contact"
-              className="bg-black text-white px-4 py-2.5 rounded-full font-semibold text-sm
-                         transition-all duration-300 no-underline
-                         hover:bg-white hover:text-black"
-            >
-              Contact
-            </a>
-
-            {/* Hamburger Menu */}
-            <button
-              className="flex flex-col cursor-pointer p-2"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-            >
-              <div
-                className={`
-                w-6 h-0.5 my-0.5 transition-all duration-300 rounded-sm
-                ${isScrolled ? "bg-slate-700" : "bg-black"}
-                ${isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""}
-              `}
-              />
-              <div
-                className={`
-                w-6 h-0.5 my-0.5 transition-all duration-300 rounded-sm
-                ${isScrolled ? "bg-slate-700" : "bg-black"}
-                ${isMobileMenuOpen ? "opacity-0" : ""}
-              `}
-              />
-              <div
-                className={`
-                w-6 h-0.5 my-0.5 transition-all duration-300 rounded-sm
-                ${isScrolled ? "bg-slate-700" : "bg-black"}
-                ${isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""}
-              `}
-              />
-            </button>
+              {/* Hamburger Menu */}
+              <button
+                className="flex flex-col cursor-pointer p-2"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+              >
+                <div
+                  className={`
+                  w-6 h-0.5 my-0.5 transition-all duration-300 rounded-sm
+                  ${isScrolled ? "bg-slate-700" : "bg-black"}
+                  ${isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""}
+                `}
+                />
+                <div
+                  className={`
+                  w-6 h-0.5 my-0.5 transition-all duration-300 rounded-sm
+                  ${isScrolled ? "bg-slate-700" : "bg-black"}
+                  ${isMobileMenuOpen ? "opacity-0" : ""}
+                `}
+                />
+                <div
+                  className={`
+                  w-6 h-0.5 my-0.5 transition-all duration-300 rounded-sm
+                  ${isScrolled ? "bg-slate-700" : "bg-black"}
+                  ${isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""}
+                `}
+                />
+              </button>
+            </div>
           </div>
         </div>
       </nav>
