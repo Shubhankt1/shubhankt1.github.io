@@ -10,7 +10,6 @@ const SecondSection = ({
       style={{
         width: `${sectionWidth}%`,
         left: `${sectionLeft}%`,
-        borderRadius: `${borderRadius}px ${borderRadius}px 0 0`,
       }}
     >
       {/* Content Container with fade-in animation */}

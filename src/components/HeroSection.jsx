@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 const HeroSection = () => {
   // Array of texts to animate through
   const texts = [
-    "FULL-STACK",
-    "MOBILE DEVELOPMENT",
-    "CLOUD DEVELOPMENT",
-    "INTERNET OF THINGS",
-    "EMBEDDED SYSTEMS",
+    "{ FULL-STACK + MOBILE + CLOUD }",
+    "{ X-PLATFORM MOBILE APPS }",
+    "{ CLOUD }",
+    "{ INTERNET OF THINGS }",
+    "{ EMBEDDED SYSTEMS }",
   ];
 
   // State for the currently displayed text in the animation
@@ -66,8 +66,8 @@ const HeroSection = () => {
 
           {/* Right subtitle with typing animation */}
           <div className="text-center md:text-right flex-shrink-0 md:min-w-[200px]">
-            <span className="typing-cursor relative inline-block min-h-[1.2em]">
-              {typingText}
+            <span className="typing-cursor relative inline-block min-h-[1.2em] text-blue-500 font-light">
+              {typingText.toLowerCase()}
             </span>
           </div>
         </div>
