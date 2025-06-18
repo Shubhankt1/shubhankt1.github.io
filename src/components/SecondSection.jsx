@@ -42,8 +42,9 @@ const SecondSection = ({
 
           <p className="section-text">
             When I'm not coding, you'll find me exploring new technologies,
-            contributing to open-source projects, or sharing knowledge with the
-            developer community. Let's build something amazing together.
+            watching football (and obsessing over Cristiano Ronaldo<sup>7</sup>
+            ), or watching the one show I like the 100<sup>th</sup> time. Let's
+            build something amazing together.
           </p>
         </div>
       </div>
