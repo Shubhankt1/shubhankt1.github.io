@@ -578,7 +578,7 @@
     <div class="scroll-spacer"></div>
 
     <!-- Second Section -->
-    <section class="second-section" id="secondSection">
+    <section class="second-section" id="aboutMeSection">
       <div class="content-container" id="contentContainer">
         <h2 class="section-heading">About Me</h2>
         <p class="section-text">
@@ -661,9 +661,9 @@
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
 
-        const secondSectionComplete = viewportHeight * 0.8;
+        const aboutMeSectionComplete = viewportHeight * 0.8;
 
-        if (scrollY > secondSectionComplete) {
+        if (scrollY > aboutMeSectionComplete) {
           navbar.classList.add("scrolled");
         } else {
           navbar.classList.remove("scrolled");
@@ -671,10 +671,10 @@
       }
 
       // Second section animation (updated to handle all sections)
-      function updateSecondSection() {
+      function updateAboutMeSection() {
         // IDs for all sections and containers
         const sectionIds = [
-          { section: "secondSection", container: "contentContainer" },
+          { section: "aboutMeSection", container: "contentContainer" },
         ];
 
         const scrollY = window.scrollY;
@@ -777,7 +777,7 @@
       // Combined scroll handler
       function handleScroll() {
         updateNavbar();
-        updateSecondSection();
+        updateAboutMeSection();
       }
 
       // Initialize everything
@@ -785,12 +785,12 @@
         initializeTypingAnimation();
         initializeMobileMenu();
         updateNavbar();
-        updateSecondSection();
+        updateAboutMeSection();
 
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("resize", function () {
           updateNavbar();
-          updateSecondSection();
+          updateAboutMeSection();
         });
       });
     </script>

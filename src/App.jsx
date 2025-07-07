@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import SecondSection from "./components/SecondSection";
+import AboutMeSection from "./components/AboutMeSection";
 
 function App() {
   // State for navbar scroll effect
@@ -29,8 +29,8 @@ function App() {
       const viewportHeight = window.innerHeight;
 
       // Navbar scroll animation - triggers when scrolled past 80% of viewport
-      const secondSectionComplete = viewportHeight * 0.8;
-      setIsScrolled(scrollY > secondSectionComplete);
+      const aboutMeSectionComplete = viewportHeight * 0.8;
+      setIsScrolled(scrollY > aboutMeSectionComplete);
 
       // Start point is 0 (top of page), end point is 90% of viewport height
       const startPoint = 0;
@@ -91,7 +91,7 @@ function App() {
       {/* <div className="h-[50vh] w-full" /> */}
 
       {/* Second Section - Animated width and positioning */}
-      <SecondSection
+      <AboutMeSection
         sectionWidth={sectionWidth}
         sectionLeft={sectionLeft}
         borderRadius={borderRadius}

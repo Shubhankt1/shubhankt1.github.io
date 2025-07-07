@@ -79,7 +79,7 @@ portfolio/
 │   ├── components/
 │   │   ├── Navbar.jsx          # Navigation component with mobile menu
 │   │   ├── HeroSection.jsx     # Hero with typing animation
-│   │   ├── SecondSection.jsx   # About section with scroll effects
+│   │   ├── AboutMeSection.jsx   # About section with scroll effects
 │   │   └── FloatingElements.jsx # Background floating animations
 │   ├── App.jsx                 # Main app component
 │   ├── main.jsx               # React entry point
@@ -103,7 +103,7 @@ portfolio/
 ### Content
 
 - Update personal information in `HeroSection.jsx`
-- Modify the about section content in `SecondSection.jsx`
+- Modify the about section content in `AboutMeSection.jsx`
 - Add new sections by creating additional components
 
 ### Animation Timing
