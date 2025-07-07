@@ -1,18 +1,33 @@
-const AboutMeSection = ({ sectionWidth, sectionLeft, isVisible }) => {
+const AboutMeSection = ({ index, sectionWidth, sectionLeft, isVisible }) => {
   return (
+    // <section
+    //   className="
+    //     min-h-screen
+    //     bg-black
+    //     sticky top-0 z-20
+    //     flex items-center
+    //     px-8 py-16
+    //     mt-[90vh]
+    //     shadow-xl
+    //   "
+    //   style={{
+    //     width: `${sectionWidth}%`,
+    //     left: `${sectionLeft}%`,
+    //   }}
+    // >
     <section
       className="
+        flex items-center
         min-h-screen
         bg-black
-        sticky top-0 z-20
-        flex items-center
-        px-8 py-16
-        mt-[90vh]
-        shadow-xl
+        sticky
+        top-0
       "
       style={{
         width: `${sectionWidth}%`,
         left: `${sectionLeft}%`,
+        marginTop: `${index * 90}vh`, // push down by one viewport per prior panel
+        zIndex: 10 + index * 10, // ensure stacking order: 10, 20, 30…
       }}
     >
       {/* Content Container with fade-in animation */}
