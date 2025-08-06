@@ -85,7 +85,7 @@ const Navbar = ({ isScrolled }) => {
                 text-black hover:text-blue-500
                 2k+:text-lg
                 qhd:text-xl
-				3k:text-3xl
+				3k:text-2xl
               `}
             >
               HEYIAMSHUBHANK
@@ -102,7 +102,7 @@ const Navbar = ({ isScrolled }) => {
                     text-black hover:text-blue-500
                     2k+:text-lg
                     qhd:text-xl
-					3k:text-3xl
+					3k:text-2xl
                   `}
                 >
                   About
@@ -117,7 +117,7 @@ const Navbar = ({ isScrolled }) => {
                     text-black hover:text-blue-500
                     2k+:text-lg
                     qhd:text-xl
-					3k:text-3xl
+					3k:text-2xl
                   `}
                 >
                   Education
@@ -132,7 +132,7 @@ const Navbar = ({ isScrolled }) => {
                     text-black hover:text-blue-500
                     2k+:text-lg
                     qhd:text-xl
-					3k:text-3xl
+					3k:text-2xl
                   `}
                 >
                   Skills
@@ -147,7 +147,7 @@ const Navbar = ({ isScrolled }) => {
                     text-black hover:text-blue-500
                     2k+:text-lg
                     qhd:text-xl
-					3k:text-3xl
+					3k:text-2xl
                   `}
                 >
                   Projects
@@ -166,7 +166,7 @@ const Navbar = ({ isScrolled }) => {
                     hover:shadow-xl
                     2k+:text-lg
                     qhd:text-xl
-					3k:text-3xl
+					3k:text-2xl
                   `}
                 >
                   Contact

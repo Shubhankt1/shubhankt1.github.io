@@ -34,7 +34,7 @@
 
   /* Hero title responsive sizing */
   .hero-title {
-    font-size: clamp(3rem, 8vw, 8rem);
+    font-size: clamp(3rem, 8vw, 10rem);
     @apply font-extrabold text-black text-center whitespace-nowrap tracking-tight leading-none;
   }
 
@@ -42,6 +42,15 @@
   .hero-subtitle {
     font-size: clamp(1rem, 1.2vw, 1.5rem);
     @apply font-medium text-black;
+  }
+
+  @media (min-width: 3200px) {
+    .hero-title {
+      font-size: clamp(8rem, 7vw, 20rem);
+    }
+    .hero-subtitle {
+      font-size: clamp(2rem, 1.2vw, 2.5rem);
+    }
   }
 
   /* Section heading responsive sizing */
@@ -53,7 +62,7 @@
   /* Section text responsive sizing */
   .section-text {
     font-size: clamp(1.1rem, 2vw, 1.3rem);
-    @apply leading-relaxed text-white text-justify;
+    @apply leading-relaxed text-white text-center;
   }
 
   /* Mobile navbar adjustments */
@@ -69,19 +78,39 @@
 
   /* Seal image at top-center */
   .diploma-seal {
-    @apply block mx-auto w-24 h-24;
+    @apply block mx-auto size-16;
   }
 
   /* Old English heading */
   .diploma-school {
-    @apply text-center mb-2;
+    @apply text-center;
     font-family: "OldEnglish", serif;
-    font-size: 1.75rem;
+    /* font-size: 1.75rem; */
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
     color: #3c2f23; /* dark gold */
   }
 
   .diploma-text {
     @apply text-center text-[#3c2f23] mb-1;
+  }
+
+  .diploma-degree {
+    font-family: "OldEnglish", serif;
+  }
+
+  /* Skills card styling */
+  .skill-card {
+    @apply rounded-xl border transition-all duration-300 transform hover:scale-105;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .skill-card:hover {
+    @apply shadow-2xl;
+  }
+
+  /* Skills list animation */
+  .skills-list {
+    transform-origin: top;
   }
 }
 

@@ -6,6 +6,7 @@ import AboutMeSection from "./components/AboutMeSection";
 import EducationSection from "./components/EducationSection";
 import useScrollAnimation from "./hooks/useScrollAnimation";
 import useSectionAnimation from "./hooks/useSectionAnimation";
+import SkillsSection from "./components/SkillsSection";
 
 function App() {
   const { isScrolled } = useScrollAnimation();
@@ -35,9 +36,11 @@ function App() {
   // pick different startWidth based on screen size
   // const aboutStart = isMobile ? 100 : 75;
   const eduStart = isMobile ? 100 : 75;
+  const skillsStart = isMobile ? 100 : 75;
 
   const aboutRef = useRef(null);
   const educationRef = useRef(null);
+  const skillsRef = useRef(null);
 
   const aboutAnim = useSectionAnimation(aboutRef, {
     startWidth: 75,
@@ -45,6 +48,10 @@ function App() {
   });
   const educationAnim = useSectionAnimation(educationRef, {
     startWidth: eduStart,
+    endWidth: 100,
+  });
+  const skillsAnim = useSectionAnimation(skillsRef, {
+    startWidth: skillsStart,
     endWidth: 100,
   });
 
@@ -80,6 +87,20 @@ function App() {
           sectionLeft={educationAnim.left}
           isVisible={educationAnim.isVisible}
           isScrolled={educationAnim.isScrolled}
+        />
+      </div>
+
+      {/* {Skills (stacks over Education)} */}
+      <div
+        ref={skillsRef}
+        className="sticky top-0"
+        style={{ marginTop: "-8vh", zIndex: 30 }}
+      >
+        <SkillsSection
+          sectionWidth={skillsAnim.width}
+          sectionLeft={skillsAnim.left}
+          isVisible={skillsAnim.isVisible}
+          isScrolled={skillsAnim.isScrolled}
         />
       </div>
     </div>
