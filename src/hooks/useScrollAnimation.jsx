@@ -22,7 +22,7 @@ export default function useScrollAnimation() {
       setSectionWidth(Math.min(100, newWidth));
       setSectionLeft(Math.max(0, (100 - newWidth) / 2));
       setBorderRadius(CONFIG.maxBorderRadius * (1 - progress));
-      setIsVisible(progress > 0.05);
+      setIsVisible(progress > 0.1);
     }
 
     window.addEventListener("scroll", handleScroll);

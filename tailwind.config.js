@@ -4,12 +4,25 @@ export default {
   theme: {
     screens: {
       // Custom breakpoints for specific device issues
-      xs: "480px", // Small mobile devices
+      xs: "480px", // big mobile devices
       "tablet-sm": "768px", // Small tablets (768x1024, iPad portrait)
       "tablet-md": "834px", // Medium tablets (iPad Air, etc.)
-      "tablet-lg": "1024px", // Large tablets (iPad landscape)
+      "tablet-lg": "1080px", // Large tablets (iPad landscape)
+      "2k": "1440px", // wide screens (1440x900, 1600x1200)
+      "2k+": "1536px",
+      fhd: "1920px", // Full HD screens (1920x1080, 2560x1440)
+      qhd: "2560px", // Quad HD screens (2560x1440, 3840x2160)
+      "3k": "3200px",
+      "4k": "3840px",
     },
     extend: {
+      maxWidth: {
+        hd: "1280px", // HD screens
+        "2k": "1440px", // wide screens
+        fhd: "1920px", // Full HD screens
+        qhd: "2560px",
+        "3k": "3200px",
+      },
       // Custom fonts similar to your original design
       fontFamily: {
         inter: [

@@ -18,6 +18,13 @@
   }
 }
 
+@font-face {
+  font-family: "OldEnglish";
+  src: url("/assets/fonts/oldenglishtextmt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Custom component styles */
 @layer components {
   /* Navbar scrolled state styles */
@@ -46,12 +53,35 @@
   /* Section text responsive sizing */
   .section-text {
     font-size: clamp(1.1rem, 2vw, 1.3rem);
-    @apply leading-relaxed text-white text-justify mb-8;
+    @apply leading-relaxed text-white text-justify;
   }
 
   /* Mobile navbar adjustments */
   .navbar-mobile-scrolled {
     @apply w-[90%] left-[5%] bg-white/95 backdrop-blur-md rounded-[25px] shadow-xl px-6 py-3;
+  }
+
+  /* Diploma card styling */
+  .diploma-card {
+    @apply bg-[#f9f6f0] border-4 rounded-lg shadow-xl overflow-hidden;
+    border-color: #d4af37; /* gold */
+  }
+
+  /* Seal image at top-center */
+  .diploma-seal {
+    @apply block mx-auto w-24 h-24;
+  }
+
+  /* Old English heading */
+  .diploma-school {
+    @apply text-center mb-2;
+    font-family: "OldEnglish", serif;
+    font-size: 1.75rem;
+    color: #3c2f23; /* dark gold */
+  }
+
+  .diploma-text {
+    @apply text-center text-[#3c2f23] mb-1;
   }
 }
 

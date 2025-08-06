@@ -34,7 +34,8 @@ const Navbar = ({ isScrolled }) => {
       {/* Main Navigation */}
       <nav
         className={`
-          fixed top-5 left-0 w-full z-50 transition-all duration-500 ease-out
+          fixed top-2 left-0 w-full z-50 transition-all duration-500 ease-out
+          tablet-sm:top-5
           bg-transparent
         `}
         onKeyDown={handleKeyDown}
@@ -46,9 +47,9 @@ const Navbar = ({ isScrolled }) => {
             ${
               isScrolled
                 ? // When scrolled - wider on small tablets, more conservative on mobile
-                  "max-w-[90vw] tablet-sm:max-w-[80vw] tablet-md:max-w-[80vw] lg:max-w-[70vw]"
+                  "max-w-[90vw] tablet-sm:max-w-[80vw] lg:max-w-[70vw] qhd:max-w-[60vw]"
                 : // When not scrolled
-                  "max-w-[80vw]"
+                  "max-w-[90vw] tablet-sm:max-w-[80vw] qhd:max-w-[70vw] 3k:max-w-[65vw] 4k:max-w-[60vw]"
             }
             transition-all duration-500
           `}
@@ -60,13 +61,13 @@ const Navbar = ({ isScrolled }) => {
               ${isScrolled ? "shadow-lg mt-4 md:mt-6 lg:mt-8" : ""}
               ${
                 isScrolled
-                  ? "py-2 tablet-sm:py-5 tablet-lg:py-6 lg:py-6"
+                  ? "py-2 tablet-sm:py-5 tablet-lg:py-6 fhd:py-8"
                   : "py-4 md:py-6 lg:py-8"
               }
               ${
                 isScrolled
-                  ? "px-4 sm:px-4 tablet-sm:px-6 tablet-md:px-6 lg:px-8"
-                  : "px-0 sm:px-4 lg:px-6"
+                  ? "px-4 sm:px-4 tablet-sm:px-6 tablet-md:px-6 fhd:px-8"
+                  : "px-4 lg:px-6"
               }
               flex justify-between items-center
               rounded-full
@@ -77,11 +78,14 @@ const Navbar = ({ isScrolled }) => {
             <a
               href="#"
               className={`
-                text-sm xs:text-base tablet-sm:text-lg lg:text-xl 
+                text-sm xs:text-base tablet-sm:text-lg 
                 font-bold no-underline tracking-wide flex-shrink-0 
                 mr-2 xs:mr-4 tablet-sm:mr-6 lg:mr-8
                 transition-colors duration-300
                 text-black hover:text-blue-500
+                2k+:text-lg
+                qhd:text-xl
+				3k:text-3xl
               `}
             >
               HEYIAMSHUBHANK
@@ -96,6 +100,9 @@ const Navbar = ({ isScrolled }) => {
                     no-underline text-base font-medium py-2 whitespace-nowrap
                     transition-all duration-300 hover:-translate-y-0.5
                     text-black hover:text-blue-500
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-3xl
                   `}
                 >
                   About
@@ -108,6 +115,9 @@ const Navbar = ({ isScrolled }) => {
                     no-underline text-base font-medium py-2 whitespace-nowrap
                     transition-all duration-300 hover:-translate-y-0.5
                     text-black hover:text-blue-500
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-3xl
                   `}
                 >
                   Education
@@ -120,6 +130,9 @@ const Navbar = ({ isScrolled }) => {
                     no-underline text-base font-medium py-2 whitespace-nowrap
                     transition-all duration-300 hover:-translate-y-0.5
                     text-black hover:text-blue-500
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-3xl
                   `}
                 >
                   Skills
@@ -132,6 +145,9 @@ const Navbar = ({ isScrolled }) => {
                     no-underline text-base font-medium py-2 whitespace-nowrap
                     transition-all duration-300 hover:-translate-y-0.5
                     text-black hover:text-blue-500
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-3xl
                   `}
                 >
                   Projects
@@ -142,12 +158,15 @@ const Navbar = ({ isScrolled }) => {
                   href="#contact"
                   className={`
                     bg-black text-white rounded-full font-semibold no-underline
-                    px-3 tablet-md:px-4 lg:px-6 
-                    py-3
-                    text-sm tablet-md:text-sm lg:text-base
+                    px-3 tablet-md:px-4
+                    py-3 2k:py-2
+                    text-sm tablet-md:text-sm
                     transition-all duration-300 whitespace-nowrap
                     hover:bg-blue-500 hover:-translate-y-0.5 hover:scale-105
                     hover:shadow-xl
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-3xl
                   `}
                 >
                   Contact
@@ -206,7 +225,7 @@ const Navbar = ({ isScrolled }) => {
         className={`
           fixed bg-white border border-gray-200 rounded-lg shadow-xl z-50 
           transition-all duration-300 tablet-sm:hidden
-          top-12 xs:top-16 right-2 xs:right-4 
+          top-14 xs:top-16 right-2 xs:right-4 
           w-40 xs:w-48
           ${
             isMobileMenuOpen
