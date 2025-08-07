@@ -76,31 +76,31 @@ function App() {
         />
       </div>
 
-      {/* Education (stacks over About Me) */}
-      <div
-        ref={educationRef}
-        className="sticky tablet-sm:top-0"
-        style={{ marginTop: "-8vh", zIndex: 30 }}
-      >
-        <EducationSection
-          sectionWidth={educationAnim.width}
-          sectionLeft={educationAnim.left}
-          isVisible={educationAnim.isVisible}
-          isScrolled={educationAnim.isScrolled}
-        />
-      </div>
-
       {/* {Skills (stacks over Education)} */}
       <div
         ref={skillsRef}
         className="sticky tablet-sm:top-0"
-        style={{ zIndex: 40 }}
+        style={{ marginTop: "-8vh", zIndex: 30 }}
       >
         <SkillsSection
           sectionWidth={skillsAnim.width}
           sectionLeft={skillsAnim.left}
           isVisible={skillsAnim.isVisible}
           isScrolled={skillsAnim.isScrolled}
+        />
+      </div>
+
+      {/* Education (stacks over About Me) */}
+      <div
+        ref={educationRef}
+        className="sticky tablet-sm:top-0"
+        style={{ zIndex: 40 }}
+      >
+        <EducationSection
+          sectionWidth={educationAnim.width}
+          sectionLeft={educationAnim.left}
+          isVisible={educationAnim.isVisible}
+          isScrolled={educationAnim.isScrolled}
         />
       </div>
     </div>

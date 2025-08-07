@@ -47,9 +47,9 @@ const Navbar = ({ isScrolled }) => {
             ${
               isScrolled
                 ? // When scrolled - wider on small tablets, more conservative on mobile
-                  "max-w-[90vw] tablet-sm:max-w-[80vw] lg:max-w-[70vw] qhd:max-w-[60vw]"
+                  "max-w-[90vw] tablet-md:max-w-[80vw] lg:max-w-[70vw] qhd:max-w-[60vw]"
                 : // When not scrolled
-                  "max-w-[90vw] tablet-sm:max-w-[80vw] qhd:max-w-[70vw] 3k:max-w-[65vw] 4k:max-w-[60vw]"
+                  "max-w-[90vw] tablet-md:max-w-[80vw] qhd:max-w-[70vw] 3k:max-w-[65vw] 4k:max-w-[60vw]"
             }
             transition-all duration-500
           `}
@@ -110,21 +110,6 @@ const Navbar = ({ isScrolled }) => {
               </li>
               <li>
                 <a
-                  href="#education"
-                  className={`
-                    no-underline text-base font-medium py-2 whitespace-nowrap
-                    transition-all duration-300 hover:-translate-y-0.5
-                    text-black hover:text-blue-500
-                    2k+:text-lg
-                    qhd:text-xl
-					3k:text-[26px] 3k:leading-[34px]
-                  `}
-                >
-                  Education
-                </a>
-              </li>
-              <li>
-                <a
                   href="#skills"
                   className={`
                     no-underline text-base font-medium py-2 whitespace-nowrap
@@ -136,6 +121,36 @@ const Navbar = ({ isScrolled }) => {
                   `}
                 >
                   Skills
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#experience"
+                  className={`
+                    no-underline text-base font-medium py-2 whitespace-nowrap
+                    transition-all duration-300 hover:-translate-y-0.5
+                    text-black hover:text-blue-500
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-[26px] 3k:leading-[34px]
+                  `}
+                >
+                  Experience
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#education"
+                  className={`
+                    no-underline text-base font-medium py-2 whitespace-nowrap
+                    transition-all duration-300 hover:-translate-y-0.5
+                    text-black hover:text-blue-500
+                    2k+:text-lg
+                    qhd:text-xl
+					3k:text-[26px] 3k:leading-[34px]
+                  `}
+                >
+                  Education
                 </a>
               </li>
               <li>
@@ -245,15 +260,6 @@ const Navbar = ({ isScrolled }) => {
             About
           </a>
           <a
-            href="#education"
-            className="text-black no-underline text-base font-medium px-6 py-3 
-                       transition-all duration-200 border-b border-gray-100 last:border-b-0
-                       hover:bg-gray-50 hover:text-gray-700"
-            onClick={closeMobileMenu}
-          >
-            Education
-          </a>
-          <a
             href="#skills"
             className="text-black no-underline text-base font-medium px-6 py-3 
                        transition-all duration-200 border-b border-gray-100 last:border-b-0
@@ -261,6 +267,24 @@ const Navbar = ({ isScrolled }) => {
             onClick={closeMobileMenu}
           >
             Skills
+          </a>
+          <a
+            href="#experience"
+            className="text-black no-underline text-base font-medium px-6 py-3 
+                       transition-all duration-200 border-b border-gray-100 last:border-b-0
+                       hover:bg-gray-50 hover:text-gray-700"
+            onClick={closeMobileMenu}
+          >
+            Experience
+          </a>
+          <a
+            href="#education"
+            className="text-black no-underline text-base font-medium px-6 py-3 
+                       transition-all duration-200 border-b border-gray-100 last:border-b-0
+                       hover:bg-gray-50 hover:text-gray-700"
+            onClick={closeMobileMenu}
+          >
+            Education
           </a>
           <a
             href="#projects"
