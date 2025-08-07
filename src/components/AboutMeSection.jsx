@@ -8,10 +8,8 @@ const AboutMeSection = ({
 }) => (
   <section
     className={`
-        mb-16
-        flex items-center
-        relative
-        px-8 py-16 shadow-xl
+        flex items-center relative
+        mb-16 px-8 py-16 shadow-xl
         tablet-sm:min-h-screen
         tablet-sm:sticky tablet-sm:top-0
         ${isScrolled ? "bg-white" : "bg-black"}
@@ -24,6 +22,7 @@ const AboutMeSection = ({
     <div
       className={`
         max-w-6xl mx-auto
+		3k:max-w-fhd
         transition-all duration-700 ease-out
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
       `}
@@ -36,7 +35,13 @@ const AboutMeSection = ({
       >
         About Me
       </h2>
-      <div className="grid grid-cols-1 tablet-sm:grid-cols-2 gap-12 items-start 2k:items-center">
+      <div
+        className="
+	  	grid grid-cols-1 gap-12 items-start
+		tablet-sm:grid-cols-2
+		2k:items-center
+	  "
+      >
         <div
           className="
           w-full
@@ -46,6 +51,8 @@ const AboutMeSection = ({
           2k:max-w-[450px]
           fhd:max-w-[500px]
           qhd:max-w-[600px]
+          3k:max-w-[700px]
+		  4k:max-w-[800px]
           aspect-square overflow-hidden
           rounded-2xl shadow-2xl
           mx-auto tablet-lg:mx-0
@@ -58,12 +65,12 @@ const AboutMeSection = ({
             className="w-full h-full object-cover object-center"
           />
         </div>
-        <div className="space-y-6">
+        <div className="space-y-6 3k:space-y-8 4k:space-y-10">
           <p
             className={`
               section-text
               ${isScrolled ? "text-black" : "text-white"}
-              qhd:text-2xl
+              qhd:text-2xl 3k:text-3xl 3k:leading-[40px]
             `}
           >
             Welcome to my digital space. I'm passionate about creating
@@ -75,7 +82,7 @@ const AboutMeSection = ({
             className={`
               section-text
               ${isScrolled ? "text-black" : "text-white"}
-              qhd:text-2xl
+              qhd:text-2xl 3k:text-3xl 3k:leading-[40px]
             `}
           >
             I believe in the power of clean code, thoughtful design, and
@@ -87,7 +94,7 @@ const AboutMeSection = ({
             className={`
               section-text
               ${isScrolled ? "text-black" : "text-white"}
-              qhd:text-2xl
+              qhd:text-2xl 3k:text-3xl 3k:leading-[40px]
             `}
           >
             When I'm not coding, you'll find me exploring new technologies,

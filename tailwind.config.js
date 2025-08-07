@@ -20,6 +20,7 @@ export default {
         hd: "1280px", // HD screens
         "2k": "1440px", // wide screens
         fhd: "1920px", // Full HD screens
+        "fhd+": "2208px", // DCI 2k
         qhd: "2560px",
         "3k": "3200px",
       },

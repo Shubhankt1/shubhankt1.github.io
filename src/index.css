@@ -86,7 +86,7 @@
     @apply text-center;
     font-family: "OldEnglish", serif;
     /* font-size: 1.75rem; */
-    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-size: clamp(1.5rem, 2.5vw, 1.75rem); /*  */
     color: #3c2f23; /* dark gold */
   }
 

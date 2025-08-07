@@ -8,7 +8,7 @@ const educationData = [
     school: "Northeastern University",
     degree: "Master of Science",
     major: "Internet of Things",
-    dates: "2023–2025",
+    dates: "2023 – 2025",
     gpa: "Graduated cum laude",
     highlights: ["Graduated cum-laude", "Thesis on embedded security"],
   },
@@ -19,7 +19,7 @@ const educationData = [
     school: "University of Petroleum and Energy Studies",
     degree: "Bachelor of Technology",
     major: "Computer Science Engineering (IoT)",
-    dates: "Aug 2016 – May 2020",
+    dates: "2016 – 2020",
     gpa: "Graduated with Honors",
     highlights: ["Graduated with Honors", "Joint Secretary of IoT Club"],
   },
@@ -101,10 +101,10 @@ const EducationSection = ({
               alt={`${ed.school} seal`}
               className="
                 diploma-seal
-                xs:w-24 xs:h-24
-                2k:w-[110px] 2k:h-[110px]
-                2k+:w-[125px] 2k+:h-[125px]
-				3k:w-[140px] 3k:h-[140px]
+				w-24 h-24
+                2k:w-[100px] 2k:h-[100px]
+                2k+:w-[110px] 2k+:h-[110px]
+				3k:w-[160px] 3k:h-[160px]
               "
             />
 
@@ -112,11 +112,12 @@ const EducationSection = ({
             <h3
               className="
                   diploma-school
-				  tablet-sm:text-2xl
+				  tablet-sm:text-2xl 2k+:text-3xl
+                  qhd:text-4xl 3k:text-5xl
+				  2k:mt-2 2k:mb-1
+				  2k+:mt-3 2k+:mb-1
                   qhd:mt-4 qhd:mb-4
                   3k:mt-6 3k:mb-6
-                  qhd:text-4xl
-				  3k:text-5xl
                 "
             >
               {ed.school}
@@ -125,36 +126,37 @@ const EducationSection = ({
             {/* Details */}
             <p
               className="
-			diploma-text italic
-			qhd:text-lg qhd:mb-2
-			3k:text-2xl 3k:mb-4
+			diploma-text italic mb-3 text-sm
+			2k+:mb-3 qhd:mb-4
+			2k+:text-base 
+			3k:text-2xl 3k:mb-6
 			"
             >
               {ed.location}
             </p>
             <p
               className="
-			diploma-text font-semibold
-			qhd:text-lg qhd:mb-2
-			3k:text-[26px] 3k:mb-4
+			diploma-text font-semibold text-[15px]
+			qhd:text-[17px] qhd:mb-2
+			3k:text-[24px] 3k:mb-5
 			"
             >
               {ed.college}
             </p>
             <p
               className="
-			diploma-degree text-xl
-			tablet-sm:text-2xl tablet-sm:mb-1
-			qhd:text-3xl qhd:mb-2
-			3k:text-[42px] 3k:mb-6
+			diploma-degree text-2xl mb-2
+			tablet-sm:text-2xl 2k+:text-[26px]
+			qhd:text-3xl 3k:text-[40px] 
+			tablet-sm:mb-1 2k+:mb-2 qhd:mb-3 3k:mb-6
 			"
             >
               {ed.degree}
             </p>
             <p
               className="
-			diploma-text italic mb-4
-			qhd:text-lg qhd:mb-2
+			diploma-text italic mb-3
+			qhd:text-lg
 			3k:text-2xl 3k:mb-6
 			"
             >
@@ -162,7 +164,7 @@ const EducationSection = ({
             </p>
             <p
               className="
-			diploma-text
+			diploma-text text-sm
 			qhd:text-lg qhd:mb-2
 			3k:text-2xl 3k:mb-2
 			"

@@ -79,7 +79,7 @@ function App() {
       {/* Education (stacks over About Me) */}
       <div
         ref={educationRef}
-        className="sticky top-0"
+        className="sticky tablet-sm:top-0"
         style={{ marginTop: "-8vh", zIndex: 30 }}
       >
         <EducationSection
@@ -93,8 +93,8 @@ function App() {
       {/* {Skills (stacks over Education)} */}
       <div
         ref={skillsRef}
-        className="sticky top-0"
-        style={{ marginTop: "-8vh", zIndex: 30 }}
+        className="sticky tablet-sm:top-0"
+        style={{ zIndex: 30 }}
       >
         <SkillsSection
           sectionWidth={skillsAnim.width}

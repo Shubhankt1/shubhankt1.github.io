@@ -20,7 +20,9 @@ const SkillsSection = ({
         "CLEAN Architecture",
         "Riverpod / Provider / BloC",
         "Codemagic",
-        "iOS/Android",
+        "XCode",
+        "Android Studio",
+        "iOS / Android",
       ],
     },
     {
@@ -34,13 +36,17 @@ const SkillsSection = ({
       title: "DevOps & Cloud",
       icon: "☁️",
       skills: [
-        "AWS",
+        "Amazon Web Services",
         "Terraform",
         "Docker",
-        "Ansible",
         "Shell",
-        "CloudWatch",
         "API Gateway",
+        "EC2",
+        "CloudWatch",
+        "CloudFront",
+        "S3",
+        "IAM",
+        "Ansible",
       ],
     },
     {
@@ -50,7 +56,7 @@ const SkillsSection = ({
       skills: [
         "Elasticsearch",
         "MongoDB",
-        "DynamoDB",
+        "AWS DynamoDB",
         "Redis",
         "MySQL",
         "SQLite",
@@ -76,15 +82,7 @@ const SkillsSection = ({
       id: "tools",
       title: "Tools & Frameworks",
       icon: "🛠️",
-      skills: [
-        "Git",
-        "POSTMAN",
-        "XCode",
-        "REST",
-        "SDLC",
-        "Agile/Scrum",
-        "JIRA",
-      ],
+      skills: ["Git", "POSTMAN", "REST", "SDLC", "Agile/Scrum", "JIRA"],
     },
   ];
 
@@ -110,7 +108,7 @@ const SkillsSection = ({
       <div
         className={`
         w-full max-w-2xl mx-auto
-		tablet-lg:max-w-4xl 2k+:max-w-6xl qhd:max-w-2k 3k:max-w-fhd
+		tablet-lg:max-w-4xl 2k+:max-w-6xl qhd:max-w-2k 3k:max-w-fhd+
         transition-all duration-700 ease-out
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
       `}
@@ -238,6 +236,7 @@ const SkillsSection = ({
                         className={`
                           text-sm px-3 py-2 rounded-lg text-center
 						  flex flex-wrap items-center justify-center
+						  3k:text-[26px] 3k:leading-[34px]
                           ${
                             isScrolled
                               ? "bg-blue-100 text-blue-800"
