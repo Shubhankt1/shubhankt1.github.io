@@ -18,6 +18,7 @@ const AboutMeSection = ({
       width: `${sectionWidth}%`,
       left: `${sectionLeft}%`,
     }}
+    id="about"
   >
     <div
       className={`

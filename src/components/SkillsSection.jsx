@@ -104,6 +104,7 @@ const SkillsSection = ({
         width: `${sectionWidth}%`,
         left: `${sectionLeft}%`,
       }}
+      id="skills"
     >
       <div
         className={`

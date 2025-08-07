@@ -43,6 +43,7 @@ const EducationSection = ({
       width: `${sectionWidth}%`,
       left: `${sectionLeft}%`,
     }}
+    id="education"
   >
     <div
       className={`

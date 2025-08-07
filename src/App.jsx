@@ -94,7 +94,7 @@ function App() {
       <div
         ref={skillsRef}
         className="sticky tablet-sm:top-0"
-        style={{ zIndex: 30 }}
+        style={{ zIndex: 40 }}
       >
         <SkillsSection
           sectionWidth={skillsAnim.width}
