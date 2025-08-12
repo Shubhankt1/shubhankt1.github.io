@@ -134,6 +134,7 @@ const SkillsSection = ({
             <div
               key={category.id}
               className={`
+				glow-border glow-border-oval glow-border-purple glow-border-hover
                 skill-card relative overflow-hidden cursor-pointer
 				transition-all duration-300
                 ${
@@ -237,6 +238,7 @@ const SkillsSection = ({
                         className={`
                           text-sm px-3 py-2 rounded-lg text-center
 						  flex flex-wrap items-center justify-center
+						  2k+:text-base
 						  3k:text-[26px] 3k:leading-[34px]
                           ${
                             isScrolled
