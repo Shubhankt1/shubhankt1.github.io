@@ -50,6 +50,20 @@ function App() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Listen for command palette trigger from navbar
+  useEffect(() => {
+    const handleOpenCommandPalette = () => {
+      setIsCommandPaletteOpen(true);
+    };
+
+    window.addEventListener("openCommandPalette", handleOpenCommandPalette);
+    return () =>
+      window.removeEventListener(
+        "openCommandPalette",
+        handleOpenCommandPalette
+      );
+  }, []);
+
   // pick different startWidth based on screen size
   // const aboutStart = isMobile ? 100 : 75;
   const skillsStart = isMobile ? 100 : 75;

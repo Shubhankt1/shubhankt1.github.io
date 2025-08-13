@@ -29,6 +29,12 @@ const Navbar = ({ isScrolled }) => {
     }
   };
 
+  const openCommandPalette = () => {
+    // You'll need to pass this as a prop from App.jsx
+    // For now, we'll dispatch a custom event
+    window.dispatchEvent(new CustomEvent("openCommandPalette"));
+  };
+
   return (
     <>
       {/* Main Navigation */}
@@ -47,7 +53,7 @@ const Navbar = ({ isScrolled }) => {
             ${
               isScrolled
                 ? // When scrolled - wider on small tablets, more conservative on mobile
-                  "max-w-[90vw] tablet-md:max-w-[80vw] lg:max-w-[70vw] qhd:max-w-[60vw]"
+                  "max-w-[90vw] tablet-lg:max-w-[85vw] tablet-md:max-w-[80vw] lg:max-w-[70vw] qhd:max-w-[60vw]"
                 : // When not scrolled
                   "max-w-[90vw] tablet-md:max-w-[80vw] qhd:max-w-[70vw] 3k:max-w-[65vw] 4k:max-w-[60vw]"
             }
@@ -167,6 +173,52 @@ const Navbar = ({ isScrolled }) => {
                 >
                   Projects
                 </a>
+              </li>
+              {/* <li>
+                <button
+                  onClick={openCommandPalette}
+                  className={`
+					flex items-center px-1.5 py-0.5 rounded-xl
+					bg-gray-100/80 hover:bg-gray-200/80 backdrop-blur-sm
+					border border-gray-300/50 hover:border-gray-400/50
+					transition-all duration-300 hover:-translate-y-0.5
+					text-gray-700 hover:text-gray-900
+					text-sm 2k+:text-base qhd:text-lg 3k:text-xl
+				  `}
+                  title="Open Command Palette (⌘K)"
+                >
+                  <span className="font-medium mr-4">Jump To...</span>
+                  <span className="text-base 2k+:text-lg 3k:text-xl">⌘</span>
+                  <span className="font-medium">K</span>
+                </button>
+              </li> */}
+              <li className="hidden tablet-lg:block">
+                <button
+                  onClick={openCommandPalette}
+                  className={`
+					flex items-center gap-2 px-4 py-2 rounded-full
+					bg-gray-100/80 hover:bg-gray-200/80 backdrop-blur-sm
+					border border-gray-300/50 hover:border-gray-400/50
+					transition-all duration-300 hover:-translate-y-0.5
+					text-gray-700 hover:text-gray-900
+					text-sm 2k+:text-base qhd:text-lg 3k:text-xl
+					whitespace-nowrap
+				  `}
+                  title="Open Command Palette (⌘K)"
+                >
+                  <span className="font-medium">Jump to...</span>
+                  <div
+                    className="
+				  	flex items-center ml-2 px-1.5 py-0.5 bg-white/60 rounded-md
+					border border-gray-500/50 backdrop-blur-sm
+				  "
+                  >
+                    <span className="text-xs 2k+:text-sm 3k:text-base">⌘</span>
+                    <span className="text-xs 2k+:text-sm 3k:text-base font-medium">
+                      K
+                    </span>
+                  </div>
+                </button>
               </li>
               <li>
                 <a
