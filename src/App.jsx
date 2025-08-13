@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import SkillsSection from "./components/SkillsSection";
 import AboutMeSection from "./components/AboutMeSection";
+import CommandPalette from "./components/CommandPalette";
 import useScrollAnimation from "./hooks/useScrollAnimation";
 import EducationSection from "./components/EducationSection";
 import useSectionAnimation from "./hooks/useSectionAnimation";
@@ -12,8 +13,8 @@ import ExperienceSection from "./components/ExperienceSection";
 
 function App() {
   const { isScrolled } = useScrollAnimation();
-
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
   useEffect(() => {
     // Define a handler that checks the window’s width
@@ -33,6 +34,20 @@ function App() {
     return () => {
       window.removeEventListener("resize", onResize);
     };
+  }, []);
+
+  //   Command Palette
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Cmd+K on Mac, Ctrl+K on Windows/Linux
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsCommandPaletteOpen(true);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   // pick different startWidth based on screen size
@@ -125,6 +140,12 @@ function App() {
           isScrolled={educationAnim.isScrolled}
         />
       </div>
+
+      {/* Command Palette */}
+      <CommandPalette
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+      />
     </div>
   );
 }
