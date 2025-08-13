@@ -230,7 +230,7 @@ const CommandPalette = ({ isOpen, onClose }) => {
       />
 
       {/* Command Palette */}
-      <div className="fixed top-0 left-0 right-0 z-50 p-4">
+      <div className="fixed top-20 left-0 right-0 z-50 p-4">
         <div className="max-w-2xl mx-auto mt-20">
           <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden animate-in slide-in-from-top duration-300">
             {/* Search Input */}
