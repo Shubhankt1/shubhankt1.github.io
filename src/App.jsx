@@ -1,12 +1,14 @@
 // src/App.jsx
 import { useRef, useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import AboutMeSection from "./components/AboutMeSection";
-import EducationSection from "./components/EducationSection";
-import useScrollAnimation from "./hooks/useScrollAnimation";
-import useSectionAnimation from "./hooks/useSectionAnimation";
 import SkillsSection from "./components/SkillsSection";
+import AboutMeSection from "./components/AboutMeSection";
+import useScrollAnimation from "./hooks/useScrollAnimation";
+import EducationSection from "./components/EducationSection";
+import useSectionAnimation from "./hooks/useSectionAnimation";
+import ExperienceSection from "./components/ExperienceSection";
 
 function App() {
   const { isScrolled } = useScrollAnimation();
@@ -35,23 +37,29 @@ function App() {
 
   // pick different startWidth based on screen size
   // const aboutStart = isMobile ? 100 : 75;
-  const eduStart = isMobile ? 100 : 75;
   const skillsStart = isMobile ? 100 : 75;
+  const ExperienceStart = isMobile ? 100 : 75;
+  const eduStart = isMobile ? 100 : 75;
 
   const aboutRef = useRef(null);
-  const educationRef = useRef(null);
   const skillsRef = useRef(null);
+  const ExperienceRef = useRef(null);
+  const educationRef = useRef(null);
 
   const aboutAnim = useSectionAnimation(aboutRef, {
     startWidth: 75,
     endWidth: 100,
   });
-  const educationAnim = useSectionAnimation(educationRef, {
-    startWidth: eduStart,
-    endWidth: 100,
-  });
   const skillsAnim = useSectionAnimation(skillsRef, {
     startWidth: skillsStart,
+    endWidth: 100,
+  });
+  const ExpAnim = useSectionAnimation(ExperienceRef, {
+    startWidth: ExperienceStart,
+    endWidth: 100,
+  });
+  const educationAnim = useSectionAnimation(educationRef, {
+    startWidth: eduStart,
     endWidth: 100,
   });
 
@@ -87,6 +95,20 @@ function App() {
           sectionLeft={skillsAnim.left}
           isVisible={skillsAnim.isVisible}
           isScrolled={skillsAnim.isScrolled}
+        />
+      </div>
+
+      {/* {Experience (stacks over Education)} */}
+      <div
+        ref={ExperienceRef}
+        className="sticky tablet-sm:top-0"
+        style={{ marginTop: "-8vh", zIndex: 30 }}
+      >
+        <ExperienceSection
+          sectionWidth={ExpAnim.width}
+          sectionLeft={ExpAnim.left}
+          isVisible={ExpAnim.isVisible}
+          isScrolled={ExpAnim.isScrolled}
         />
       </div>
 

@@ -61,7 +61,7 @@ const AboutMeSection = ({
         "
         >
           <img
-            src="src/shubhank-graduation.jpeg"
+            src="/assets/shubhank-graduation.jpeg"
             alt="Shubhank Tyagi"
             className="w-full h-full object-cover object-center"
           />

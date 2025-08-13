@@ -2,7 +2,7 @@
 
 const educationData = [
   {
-    logo: "assets/logos/northeastern-seal.png",
+    logo: "/assets/logos/northeastern-seal.png",
     location: "Boston, Massachusetts",
     college: "College of Engineering",
     school: "Northeastern University",
@@ -13,7 +13,7 @@ const educationData = [
     highlights: ["Graduated cum-laude", "Thesis on embedded security"],
   },
   {
-    logo: "assets/logos/upes-logo.png",
+    logo: "/assets/logos/upes-logo.png",
     location: "Dehradun, India",
     college: "School of Computer Science",
     school: "University of Petroleum and Energy Studies",
