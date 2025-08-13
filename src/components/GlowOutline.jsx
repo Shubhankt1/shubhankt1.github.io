@@ -1,6 +1,7 @@
-const GlowCard = ({
+const GlowOutline = ({
   children,
-  variant = "default",
+  type = "oval",
+  variant = "purple",
   speed = "normal",
   onHover = false,
   className = "",
@@ -9,9 +10,11 @@ const GlowCard = ({
   const getGlowClasses = () => {
     let classes = "glow-border";
 
+    if (type !== "" && type != "border") classes += ` glow-border-${type}`;
+
     // Speed variants
-    if (speed === "fast") classes += " glow-border-fast";
-    if (speed === "slow") classes += " glow-border-slow";
+    if (speed === "fast") classes += " glow-fast";
+    if (speed === "slow") classes += " glow-slow";
 
     // Color variants
     if (variant === "gold") classes += " glow-border-gold";
@@ -30,4 +33,4 @@ const GlowCard = ({
   );
 };
 
-export default GlowCard;
+export default GlowOutline;

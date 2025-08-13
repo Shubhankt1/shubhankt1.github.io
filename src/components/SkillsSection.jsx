@@ -134,7 +134,7 @@ const SkillsSection = ({
             <div
               key={category.id}
               className={`
-				glow-border glow-border-oval glow-border-purple glow-border-hover
+				glow-border glow-border-oval glow-border-hover
                 skill-card relative overflow-hidden cursor-pointer
 				transition-all duration-300
                 ${
