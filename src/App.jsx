@@ -101,7 +101,7 @@ function App() {
       {/* {Experience (stacks over Education)} */}
       <div
         ref={ExperienceRef}
-        className="sticky tablet-sm:top-0"
+        className="relative"
         style={{ marginTop: "-8vh", zIndex: 30 }}
       >
         <ExperienceSection
