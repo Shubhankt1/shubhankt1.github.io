@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      try {
+        var s = localStorage.getItem("theme");
+        var prefers =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var on = s ? s === "dark" : prefers;
+        document.documentElement.classList.toggle("dark", on);
+      } catch (e) {}
+    </script>
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self';
