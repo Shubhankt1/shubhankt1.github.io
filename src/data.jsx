@@ -6,7 +6,7 @@ export const PROFILE = {
   tagline: "Turning ideas into code, and code into impact.",
   location: "Boston, MA, USA",
   links: {
-    resume: "/Resume_Shubhank_IoT_Software_v7.pdf",
+    resume: "https://drive.google.com/file/d/13AKyLLuy-aVIgc3bMLvcnjjbXtClWZN9/view?usp=drive_link",
     github: "https://github.com/Shubhankt1",
     linkedin: "https://www.linkedin.com/in/iamshubhank",
     email: "mailto:tyagi.shu@northeastern.edu",
