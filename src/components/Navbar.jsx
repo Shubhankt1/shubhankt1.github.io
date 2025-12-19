@@ -53,7 +53,7 @@ const Navbar = ({ isScrolled }) => {
             ${
               isScrolled
                 ? // When scrolled - wider on small tablets, more conservative on mobile
-                  "max-w-[90vw] tablet-lg:max-w-[85vw] tablet-md:max-w-[80vw] lg:max-w-[70vw] qhd:max-w-[60vw]"
+                  "max-w-[90vw] tablet-md:max-w-[80vw] tablet-lg:max-w-[85vw] fhd:max-w-[75vw] qhd:max-w-[60vw]"
                 : // When not scrolled
                   "max-w-[90vw] tablet-md:max-w-[80vw] qhd:max-w-[70vw] 3k:max-w-[65vw] 4k:max-w-[60vw]"
             }
@@ -63,16 +63,20 @@ const Navbar = ({ isScrolled }) => {
           {/* White background, shadow, and padding for the navbar */}
           <div
             className={`
-              bg-white
+              ${
+                isScrolled
+                  ? "bg-white/40 backdrop-blur-xl border border-gray/20"
+                  : "bg-white"
+              }
               ${isScrolled ? "shadow-lg mt-4 md:mt-6 lg:mt-8" : ""}
               ${
                 isScrolled
-                  ? "py-2 tablet-sm:py-5 tablet-lg:py-6 fhd:py-8"
+                  ? "py-2 tablet-sm:py-5 tablet-lg:py-4 fhd:py-6"
                   : "py-4 md:py-6 lg:py-8"
               }
               ${
                 isScrolled
-                  ? "px-4 sm:px-4 tablet-sm:px-6 tablet-md:px-6 fhd:px-8"
+                  ? "px-4 sm:px-4 tablet-sm:px-6 tablet-md:px-8 fhd:px-10"
                   : "px-4 lg:px-6"
               }
               flex justify-between items-center
@@ -230,7 +234,7 @@ const Navbar = ({ isScrolled }) => {
                     text-sm tablet-md:text-sm
                     transition-all duration-300 whitespace-nowrap
                     hover:bg-blue-500 hover:-translate-y-0.5 hover:scale-105
-                    hover:shadow-xl
+                    hover:shadow-xl hover:cursor-pointer
                     2k+:text-lg
                     qhd:text-xl
 					3k:text-[26px] 3k:leading-[34px]

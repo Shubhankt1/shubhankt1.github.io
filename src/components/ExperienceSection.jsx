@@ -28,9 +28,9 @@ const ExperienceSection = ({
     },
     {
       id: "forwood-senior",
-      company: "Forwood Safety Remote",
+      company: "Forwood Safety",
       role: "Full Stack Engineer and Release Manager",
-      location: "Australia",
+      location: "Australia (Remote)",
       period: "Jan. 2023 – Jul. 2023",
       achievements: [
         "Led cross-functional design meetings for mobile and platform features, driving technical solutions from ideation to implementation.",
@@ -40,18 +40,17 @@ const ExperienceSection = ({
       ],
       technologies: [
         "Terraform",
-        "AWS Lambda",
+        "Amazon Web Services",
         "DynamoDB",
         "OpenSearch",
         "Flutter",
-        "Codemagic",
       ],
     },
     {
       id: "forwood-product",
-      company: "Forwood Safety Remote",
+      company: "Forwood Safety",
       role: "Product Engineer",
-      location: "Australia",
+      location: "Australia (Remote)",
       period: "Sep. 2020 – Jan. 2023",
       achievements: [
         "Engineered comprehensive Flutter mobile app redesign with QR-code authentication using asymmetric encryption, offline data synchronization, and internationalization across 16 languages, enhancing security, improving uptime by 30%, and expanding global reach to 1.7K+ users.",
@@ -63,9 +62,9 @@ const ExperienceSection = ({
         "QR Authentication",
         "Computer Vision",
         "YOLOv4",
-        "Android",
-        "GetX",
+        "iOS / Android",
         "OneSignal",
+        "Codemagic",
       ],
     },
     {
@@ -103,10 +102,17 @@ const ExperienceSection = ({
           ([entry]) => {
             if (entry.isIntersecting) {
               setVisibleItems((prev) => new Set([...prev, index]));
+            } else {
+              // Item going out
+              setVisibleItems((prev) => {
+                const newSet = new Set(prev);
+                newSet.delete(index);
+                return newSet;
+              });
             }
           },
           {
-            threshold: 0.3, // Trigger when 30% of item is visible
+            threshold: 0.4, // Trigger when 30% of item is visible
             rootMargin: "0px 0px -100px 0px", // Trigger slightly before fully visible
           }
         );
@@ -127,7 +133,7 @@ const ExperienceSection = ({
 		min-h-screen
 		${isScrolled ? "bg-white" : "bg-black"}
 		sticky
-		top-0 px-8 py-16
+		top-0 px-8 py-16 pt-48
 		flex items-center
 	`}
       style={{

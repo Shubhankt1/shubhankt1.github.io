@@ -27,11 +27,6 @@
 
 /* Custom component styles */
 @layer components {
-  /* Navbar scrolled state styles */
-  .navbar-scrolled {
-    @apply w-[85%] left-[7.5%] bg-white/95 backdrop-blur-md rounded-[50px] shadow-xl px-12 py-4 top-6;
-  }
-
   /* Hero title responsive sizing */
   .hero-title {
     font-size: clamp(3rem, 8vw, 10rem);
@@ -252,6 +247,20 @@
     transform: scale(1);
   }
 
+  /* Timeline item exit animation (when scrolling back up) */
+  .timeline-item:not(.animate-in) {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+    transition: all 0.4s ease-in-out;
+  }
+
+  /* Timeline dot exit animation */
+  .timeline-dot:not(.animate-in) {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
   .animate-in {
     animation-fill-mode: both;
   }
@@ -261,7 +270,7 @@
   }
 
   .slide-in-from-top {
-    animation: slideInFromTop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideInFromTop 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes fadeIn {
@@ -276,7 +285,7 @@
   @keyframes slideInFromTop {
     from {
       opacity: 0;
-      transform: translateY(-20px) scale(0.95);
+      transform: translateY(-20px) scale(0.9);
     }
     to {
       opacity: 1;

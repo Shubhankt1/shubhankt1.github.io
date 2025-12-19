@@ -116,7 +116,7 @@ const SkillsSection = ({
       >
         <h2
           className={`
-          section-heading
+          section-heading animate-fadeInUpDelay
           ${isScrolled ? "text-black" : "text-white"}
           `}
         >

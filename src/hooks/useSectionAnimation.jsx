@@ -28,7 +28,7 @@ export default function useSectionAnimation(
 
       setWidth(Math.min(100, newW));
       setLeft((100 - newW) / 2);
-      setVisible(progress > 0.05);
+      setVisible(progress > 0.5);
       // mark “fully scrolled” once progress hits 1
       setScrolled(progress >= 1);
     }
