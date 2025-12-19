@@ -91,7 +91,7 @@ const EducationSection = ({
 			  4k:max-w-7xl
               aspect-[16/9]
               flex flex-col items-center justify-center
-              tablet-md: min-h-[400px]
+              tablet-md:min-h-[400px]
               tablet-lg:min-h-[430px]
 			  3k:min-h-[600px]
 			      "
