@@ -116,7 +116,20 @@ To update content, edit the respective component files in the `components/` dire
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### GitHub Pages (Automatic)
+
+This repository includes a GitHub Actions workflow for automatic deployment:
+
+1. Go to your repository settings
+2. Navigate to **Pages** → **Source** → Select **GitHub Actions**
+3. Push your changes to the branch specified in `.github/workflows/deploy.yml`
+4. The workflow will automatically build and deploy your site
+
+The workflow is triggered on:
+- Push to the configured branch
+- Manual trigger from the Actions tab
+
+### GitHub Pages (Manual)
 
 1. Build the project:
 ```bash
@@ -125,7 +138,7 @@ npm run build
 
 2. The static files in the `out/` directory are ready for deployment
 
-3. For GitHub Pages, push the `out/` directory contents to the `gh-pages` branch or configure GitHub Actions for automatic deployment
+3. Deploy the `out/` directory contents to GitHub Pages or any static hosting service
 
 ### Other Platforms
 
